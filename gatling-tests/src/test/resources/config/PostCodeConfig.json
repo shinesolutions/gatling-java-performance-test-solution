@@ -1,0 +1,59 @@
+{
+    "simulations":
+    [
+        {
+            "defaultWeighting":
+            [
+                {
+                    "userDistributionName": "Get_Postcode",
+                    "userDistribution": 100,
+                    "requestsPerIteration": 1
+                }
+            ]
+        },
+        {
+            "simulation":
+            [
+                {
+                    "simulationType": "loadtest",
+                    "environment": "test",
+                    "numberOfUsers": 30,
+                    "rampUpDuration": 30,
+                    "peakLoadDuration": 60,
+                    "throughput": 50,
+                    "uom": "SECONDS",
+                    "actionWeighting":
+                    [
+                        {
+                            "userDistributionName": "Get_Postcode_Random",
+                            "userDistribution": 50,
+                            "requestsPerIteration": 1
+                        },
+                        {
+                            "userDistributionName": "Get_Postcode",
+                            "userDistribution": 50,
+                            "requestsPerIteration": 1
+                        }
+                    ]
+                },
+                {
+                     "simulationType": "stresstest",
+                     "environment": "test",
+                     "numberOfUsers": 200,
+                     "rampUpDuration": 15,
+                     "peakLoadDuration": 100,
+                     "throughput": 60,
+                     "uom": "MINUTES",
+                     "actionWeighting":
+                     [
+                         {
+                             "userDistributionName": "Get_Postcode_Random",
+                             "userDistribution": 100,
+                             "requestsPerIteration": 1
+                         }
+                     ]
+                 }
+            ]
+        }
+    ]
+}
