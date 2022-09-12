@@ -20,24 +20,22 @@ public class PostCodeSimulation extends Simulation {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EnvironmentConfigDetails.class);
 
-    //Define test environment
-    //String environment = SimulationConfigDetails.getEnvVarOrDefault("ENVIRONMENT", "test");
-
+    // Provide Simulation Name
     String simulationName = "PostCode";
 
-    //Define simulation type to be used for the test
+    // Define simulation type to be used for the test
     String simulationType = SimulationConfigDetails.getEnvVarOrDefault("SIMULATION_TYPE", "loadtest");
 
-    //TODO: Get simulation values
     SimulationValues simulationValues = SimulationConfigDetails.getSimulationValues(simulationName, "PostCodeConfig", simulationType);
 
-    //
+    // Define the Scenario
     ScenarioBuilder PostcodeScenario = PostCodeScenario.PostCodeScn_GetPostCodes(simulationValues);
 
+    // Define the Simulation
     {
         setUp(
                 PostcodeScenario.injectOpen(rampUsers(simulationValues.getNoOfUsers()).during(Duration.ofSeconds(simulationValues.getRampUpDuration())))
-                        .throttle( //https://gatling.io/docs/gatling/reference/current/core/simulation/#shaping-throughput
+                        .throttle(
                                 reachRps(simulationValues.getTargetRps()).in(simulationValues.getRampUpDuration()),
                                 holdFor(simulationValues.getPeakLoadDuration())
                         )

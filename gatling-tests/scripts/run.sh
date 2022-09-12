@@ -1,7 +1,7 @@
 #!/bin/sh
 # ENV VARS:
 # - REPORT_BUCKET: S3 bucket where to copy the simulation.log file to
-# - SIMULATION: Full classpath of simulation file to run, e.g. nl.codecontrol.gatling.simulations.BasicSimulation
+# - SIMULATION: Full classpath of simulation file to run, e.g. simulations.PostCode.PostCodeSimulation
 
 # Run Gatling from jar
 USER_ARGS=""

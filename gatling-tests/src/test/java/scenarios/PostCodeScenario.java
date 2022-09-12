@@ -7,8 +7,6 @@ import io.gatling.javaapi.core.ScenarioBuilder;
 import models.SimulationValues;
 import requests.PostCodeRequests;
 
-import java.time.Duration;
-
 import static io.gatling.javaapi.core.CoreDsl.*;
 
 public class PostCodeScenario {
@@ -29,7 +27,5 @@ public class PostCodeScenario {
                         )
                 );
     }
-
-
 
 }
